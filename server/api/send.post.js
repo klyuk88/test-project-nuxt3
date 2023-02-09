@@ -4,20 +4,24 @@ export default defineEventHandler(async (event) => {
 
     const transporter = nodemailer.createTransport({
         port: 465, // true for 465, false for other ports
-        host: 'smtp.yandex.ru',
+        host: '',
         auth: {
-            user: 'klyukovskiy',
+            user: '',
             pass: '',
         },
         secure: true,
     });
 
     const mailData = {
-        from: 'klyukovskiy@yandex.ru',
-        to: 'klyukovskiy@yandex.ru',
-        subject: 'Бриф с сайта launch',
+        from: '',
+        to: '',
+        subject: 'Hello world',
         text: `Hello`,
+        attachments: []
     };
 
+    
     const info = await transporter.sendMail(mailData);
+
+    return info
 });
