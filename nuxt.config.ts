@@ -29,20 +29,20 @@ export default defineNuxtConfig({
       {
         name: 'En',
         code: 'en',
-        // domian: 'en.localhost:3000',
+        domain: 'en.localhost:3000',
         file: 'en-US.json'
       },
       {
         name: 'Ru',
         code: 'ru',
-        // domian: 'localhost:3000',
+        domain: 'http://localhost:3000',
         file: 'ru-RU.json'
       }
     ],
     langDir: 'langs',
-    defaultLocale: 'ru'
-    // differentDomains: true,
-    // detectBrowserLanguage: false
+    defaultLocale: 'ru',
+    differentDomains: true,
+    detectBrowserLanguage: false,
   }
 
 })

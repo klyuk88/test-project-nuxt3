@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-const { locale, locales } = useI18n();
+const { locale, locales, t } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
+const availableLocales = computed(() => {
+  return locales.value.filter((i) => i.code !== locale.value);
+});
 
 const name = ref('');
 const files = ref([]);
@@ -30,7 +34,10 @@ const sendForm = async () => {
 </script>
 <template>
   <div class="py-5">
-    <h2>{{ $t('hello') }}</h2>
+    <a v-for="locale in availableLocales" :href="switchLocalePath(locale.code)" :key="locale.code">
+      {{ locale.code }}
+    </a>
+    <h2>{{ t('hello') }}</h2>
     <p class="mt-4">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis cumque molestias at, consectetur eum laborum.
       Distinctio repellendus rem rerum possimus sint omnis dignissimos eius ipsum quos! Maiores quam necessitatibus
